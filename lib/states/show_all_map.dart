@@ -15,6 +15,7 @@ class ShowAllMap extends StatefulWidget {
 
 class _ShowAllMapState extends State<ShowAllMap> {
   var listDataMapModels = <ListDataMapModel>[];
+  Map<MarkerId, Marker> mapMarkers = {};
 
   @override
   void initState() {
@@ -29,6 +30,15 @@ class _ShowAllMapState extends State<ShowAllMap> {
       // print('element ==> $element');
       ListDataMapModel listDataMapModel = ListDataMapModel.fromMap(element);
       listDataMapModels.add(listDataMapModel);
+
+      MarkerId markerId = MarkerId(listDataMapModel.id);
+      Marker marker = Marker(
+        markerId: markerId,
+        position: LatLng(double.parse(listDataMapModel.lat),
+            double.parse(listDataMapModel.lng)),
+            infoWindow: InfoWindow(title: listDataMapModel.title)
+      );
+      mapMarkers[markerId] = marker;
     }
     setState(() {});
   }
@@ -45,6 +55,7 @@ class _ShowAllMapState extends State<ShowAllMap> {
                 zoom: 6,
               ),
               onMapCreated: (controller) {},
+              markers: Set<Marker>.of(mapMarkers.values),
             ),
     );
   }
