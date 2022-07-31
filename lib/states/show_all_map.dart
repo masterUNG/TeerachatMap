@@ -24,9 +24,8 @@ class _ShowAllMapState extends State<ShowAllMap> {
   @override
   void initState() {
     super.initState();
-     createPinImage();
+    createPinImage();
     loadListDataMap();
-   
   }
 
   Future<void> createPinImage() async {
@@ -55,7 +54,10 @@ class _ShowAllMapState extends State<ShowAllMap> {
         markerId: markerId,
         position: LatLng(double.parse(listDataMapModel.lat),
             double.parse(listDataMapModel.lng)),
-        infoWindow: InfoWindow(title: listDataMapModel.title),
+        infoWindow: InfoWindow(
+            title: listDataMapModel.title,
+            snippet:
+                '${listDataMapModel.tumbon} ${listDataMapModel.amphoe} ${listDataMapModel.province} '),
         icon: pinBitmapDescriptor!,
       );
       mapMarkers[markerId] = marker;

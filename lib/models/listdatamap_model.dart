@@ -38,7 +38,7 @@ class ListDataMapModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'stationId': stationId,
+      'station_id': stationId,
       'title': title,
       'tumbon': tumbon,
       'amphoe': amphoe,
@@ -58,7 +58,7 @@ class ListDataMapModel {
   factory ListDataMapModel.fromMap(Map<String, dynamic> map) {
     return ListDataMapModel(
       id: (map['id'] ?? '') as String,
-      stationId: (map['stationId'] ?? '') as String,
+      stationId: (map['station_id'] ?? '') as String,
       title: (map['title'] ?? '') as String,
       tumbon: (map['tumbon'] ?? '') as String,
       amphoe: (map['amphoe'] ?? '') as String,
